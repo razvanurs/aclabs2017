@@ -1,3 +1,4 @@
+#!python3
 from collections import OrderedDict
 from itertools import combinations
 
@@ -48,23 +49,23 @@ def generate(int_list):
 
 
 # 1
-print '-' * 30
+print('-' * 30)
 l = [1, 2, 3, 4, 5]
-print 'initial: {}'.format(l)
-print 'inverted: {}\n'.format(invert(l))
+print('initial: {}'.format(l))
+print('inverted: {}\n'.format(invert(l)))
 
 # 2
-print '-' * 30
+print('-' * 30)
 test_string = 'albatross are blue and blue'
 occurrences = count(test_string)
 for k in occurrences:
-    print k, occurrences[k]
+    print(k, occurrences[k])
 
 # 3
-print '-' * 30
-print flatten([1, 2], 1)
-print flatten([1, 2, [3]], 1)
-print flatten([1, 2, [3, [4]]], 2)
+print('-' * 30)
+print(flatten([1, 2], 1))
+print(flatten([1, 2, [3]], 1))
+print(flatten([1, 2, [3, [4]]], 2))
 
 # 4
-print generate([1, 2, 3])
+print(generate([1, 2, 3]))
