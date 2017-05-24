@@ -1,0 +1,10 @@
+select.form-control {
+	display: inline-block;
+	margin-left: 10px;
+	width: 150px;
+}
+
+.question-name {
+    display: inline-block;
+    width: 200px;
+}
