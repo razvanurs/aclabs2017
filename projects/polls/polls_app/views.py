@@ -3,6 +3,7 @@ import os
 
 from django.shortcuts import render, redirect
 from django import http
+from .models import Poll
 
 def read_datafile():
     filepath = os.path.join(os.path.dirname(__file__), 'polls.json')
@@ -20,12 +21,19 @@ def hello(request):
 
 
 def index(request):
-    return render(request, 'polls_app/index.html', context={'polls': DATA})	
+	polls_qs = Poll.objects.values('name', 'slug')
 	
-def detail(request, poll_name):
+	return render(request, 'polls_app/index.html', context={'polls': polls_qs})
+	
+	
+def detail(request, slug):
 	if request.method == 'POST':
 		return redirect('index')
 	
-	poll = next((poll for poll in DATA if poll['pollName'] == poll_name))
+	try:
+		poll = Poll.objects.prefetch_related('questions__choice_set').get(slug=slug)
+	except Poll.DoesNotExist:
+		print('dsa')
+		return http.HttpResponse(content='Poll not found', status=404)
 	
 	return render(request, 'polls_app/detail.html', context={'poll': poll})

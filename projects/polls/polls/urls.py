@@ -20,6 +20,7 @@ from polls_app import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+	url(r'^$', views.hello, name='hello'),
     url(r'^polls$', views.index, name='index'),
-    url(r'^polls/(?P<poll_name>[\w\s]+)/$', views.detail, name='detail')
+    url(r'^polls/(?P<slug>[-_\w\s]+)/$', views.detail, name='detail')
 ]

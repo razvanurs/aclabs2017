@@ -2,4 +2,5 @@
 .vagrant
 .tox
 .idea/
+*.log
 __pycache__

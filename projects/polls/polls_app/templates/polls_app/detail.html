@@ -16,14 +16,14 @@
 			</div>
 			
 			<div class="panel-body">
-				<form action="{% url 'detail' poll.pollName %}" method="POST">
+				<form action="{% url 'detail' poll.slug %}" method="POST">
 					{% csrf_token %}
 					<ul class="list-group">
-					{% for question in poll.questions %}
+					{% for question in poll.questions.all %}
 						<li class="list-group-item">
-						<span class="question-name" >{{ question.questionName }}:</span>
+						<span class="question-name" >{{ question.question_text }}:</span>
 						<select class="form-control">
-							{% for p in question.options %}
+							{% for p in question.choice_set.all %}
 							<option value="{{ p }}"> {{ p }} </option>
 							{% endfor %}
 						</select>
