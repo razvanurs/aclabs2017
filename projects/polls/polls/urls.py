@@ -22,5 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'^$', views.hello, name='hello'),
     url(r'^polls$', views.index, name='index'),
-    url(r'^polls/(?P<slug>[-_\w\s]+)/$', views.detail, name='detail')
+    url(r'^polls/(?P<slug>[-_\w\s]+)/$', views.detail, name='detail'),
+	url(r'^polls/(?P<slug>[-_\w\s]+)/result/$', views.result, name='result'),
+	url(r'^polls/(?P<slug>[-_\w\s]+)/clear/$', views.clear, name='clear')
 ]
